@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta charset="utf8"/>
+<title>PouchDB Sync</title>
+<script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"></script>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link href="//use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"/>
+
+<script src="./js/sunhatoya.js"></script>
+<script src="./js/common.js"></script>
+<link href="./css/sunhatoya.css" rel="stylesheet"/>
+<link href="./css/common.css" rel="stylesheet"/>
+
+<link rel="shortcut icon" href="/imgs/icon.png" type="image/png"/>
+<link rel="icon" href="/imgs/icon.png" type="image/png"/>
+<link rel="apple-touch-icon" href="/imgs/icon.png"/>
+
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="apple-mobile-web-app-title" content="PouchDB Sync"/>
+
+<script>
+$(function(){
+  init_sunhatoya( '<%= db_url %>', showRecords );
+});
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">PouchDB Sync</a>
+  <ul class="navbar-nav float-right" style="float:right!important;" id="navbar">
+    <li><button class='btn btn-danger' title='reset' onClick='reset()'><i class='fas fa-trash-alt'></i> </button></li>
+  </ul>
+</nav>
+
+<div class="container">
+<table class="table table-bordered table-striped" id="records_table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>username</th>
+      <th>body</th>
+      <th>updated</th>
+      <th>action</th>
+    </tr>
+  </thead>
+  <tbody id="records_tbody">
+  </tbody>
+</table>
+</div>
+</div>
+
+
+<div class="modal bd-example-modal-lg fade" id="myModal" tabindex="-1" role="dialog" aria-labbelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">全リビジョン</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul id="rev_list" class="list-group">
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

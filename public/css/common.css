@@ -1,0 +1,25 @@
+.clickable{
+  cursor: pointer;
+}
+@media(max-width: 767px){
+  #tbl, input[type='button']{
+    font-size: 8px;
+  }
+}
+
+label{
+  display: block;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#records_table_label{
+  display:none;
+}
+
+#records_table_div{
+  height: 0;
+  overflow-y: hidden;
+  transition: 0.8s;
+  opacity: 0;
+}
